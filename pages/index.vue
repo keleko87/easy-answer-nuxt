@@ -47,11 +47,12 @@
 </template>
 
 <script>
-import TicketList from '../components/TicketList'
+import { mapState } from 'vuex'
+import TicketList from '@/components/TicketList'
 import tickets from '@/mixins/tickets'
-// import { mapGetters } from 'vuex'
 
 export default {
+  layout: 'header',
   name: 'Home',
 
   components: {
@@ -68,7 +69,7 @@ export default {
   },
 
   computed: {
-    // ...mapGetters(['currentUser', 'isAuthenticated'])
+    ...mapState(['currentUser', 'isAuthenticated'])
   }
 
 }

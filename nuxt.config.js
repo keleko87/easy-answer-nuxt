@@ -19,11 +19,17 @@ module.exports = {
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: '#fff' },
+  loading: { color: '#3B8070' },
   /*
    ** Global CSS
    */
-  css: [],
+  css: [
+    { src: '~/assets/css/flatly.min.css' },
+    { src: '~/assets/css/navbar.css' },
+    { src: '~/assets/css/panel.css' },
+    { src: '~/assets/css/main.scss', lang: 'scss' }
+
+  ],
   /*
    ** Plugins to load before mounting the App
    */
@@ -58,6 +64,18 @@ module.exports = {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend (config, ctx) {}
+
+    // ESLint on Save
+    // extend (config, { isDev, isClient }) {
+    //   if (isDev && isClient) {
+    //     config.module.rules.push({
+    //       enforce: 'pre',
+    //       test: /\.(js|vue)$/,
+    //       loader: 'eslint-loader',
+    //       exclude: /(node_modules)/
+    //     })
+    //   }
+    // }
   }
 }

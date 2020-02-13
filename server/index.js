@@ -7,7 +7,8 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
-const UserSchema = require('./models/User');
+// eslint-disable-next-line import/order
+const UserSchema = require('./models/User')
 
 const { Nuxt, Builder } = require('nuxt')
 const app = express()
@@ -24,7 +25,7 @@ mongoose.connect(dburl).then(() => {
   console.log('[DB Connected]: ', dburl)
 })
 
-const User = mongoose.model('User', UserSchema)
+mongoose.model('User', UserSchema)
 
 // CORS
 // const whitelist = [ 'http://localhost:8080' ]

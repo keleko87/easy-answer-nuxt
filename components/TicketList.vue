@@ -1,9 +1,9 @@
 <template>
   <div class="ticket-container">
-    <div v-if="isLoading" class="ticket-preview">
+    <!-- <div v-if="isLoading" class="ticket-preview">
       Loading tickets...
-    </div>
-    <div v-else>
+    </div> -->
+    <div>
       <div v-if="tickets.length === 0" class="ticket-preview">
         No tickets are here... yet.
       </div>

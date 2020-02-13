@@ -1,4 +1,6 @@
 const state = () => ({
+  isAuthenticated: true,
+  currentUser: {},
   tags: [],
   tickets: [],
   isLoading: true,
