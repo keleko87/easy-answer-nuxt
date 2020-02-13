@@ -1,68 +1,104 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        easy-answer-nuxt-express
-      </h1>
-      <h2 class="subtitle">
-        Easy answer with Nuxt
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+  <div class="home">
+    <div class="jumbotron">
+      <h1>Easy Answer 2</h1>
+      <h4>
+        Join the web development community of Easy Answer to share your
+        knowledge, learn or discuss!
+      </h4>
+    </div>
+
+    <div class="jumbotron-filter">
+      <div class="container">
+        <div class="row">
+          <div class="col-1" />
+          <div class="col-10">
+            <div class="d-flex flex-row justify-content-between">
+              <div>
+                <h2>All Questions</h2>
+                <h5>{{ filteredTickets.length }} questions</h5>
+              </div>
+              <div class="search form-group">
+                <label for="search" class="px-3">Filter questions</label>
+                <input
+                  v-model="query"
+                  name="search"
+                  type="text"
+                  class="w-50"
+                  placeholder="Search"
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-12">
+          <ticket-list :list="filteredTickets" :type="'all'" />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import TicketList from '../components/TicketList'
+import tickets from '@/mixins/tickets'
+// import { mapGetters } from 'vuex'
 
 export default {
+  name: 'Home',
+
   components: {
-    Logo
+    TicketList
+  },
+
+  mixins: [tickets],
+
+  data () {
+    return {
+      env: process.env,
+      query: null
+    }
+  },
+
+  computed: {
+    // ...mapGetters(['currentUser', 'isAuthenticated'])
   }
+
 }
 </script>
 
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+<style scoped>
+.search {
+  align-self: flex-end;
+}
+.jumbotron {
   text-align: center;
+  color: #fff;
+  font-weight: bold;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background: linear-gradient(-45deg, #791c96, #8e4eaf, #6894bf, #417fcc);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
 }
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 </style>
