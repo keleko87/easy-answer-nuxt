@@ -18,7 +18,6 @@ router.get('/list', (req, res) => {
 
         return newTicket
       })
-      console.log('TICKETS LIST: ', tickets)
       res.status(200).json(tickets)
     })
     .catch(err => console.log(err))

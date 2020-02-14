@@ -21,11 +21,9 @@ console.log(
   dburl
 )
 
-mongoose.connect(dburl).then(() => {
-  console.log('[DB Connected]: ', dburl)
-})
-
-mongoose.model('User', UserSchema)
+// mongoose.connect(dburl).then(() => {
+//   console.log('[DB Connected]: ', dburl)
+// })
 
 // CORS
 // const whitelist = [ 'http://localhost:8080' ]
@@ -39,18 +37,23 @@ mongoose.model('User', UserSchema)
 app.use(cors())
 app.options('*', cors())
 
-// app.use(session({
-//   secret: 'ironfundingdev',
-//   resave: false,
-//   saveUninitialized: true,
-//   store: new MongoStore({ mongooseConnection: mongoose.connection })
-// }))
+app.use(session({
+  secret: 'ironfundingdev',
+  resave: false,
+  saveUninitialized: true,
+  store: new MongoStore({ mongooseConnection: mongoose.connection })
+}))
 
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')
 config.dev = process.env.NODE_ENV !== 'production'
 
 async function start () {
+  // Connect MongoDB
+  mongoose.Promise = global.Promise
+  await mongoose.connect(dburl)
+  mongoose.model('User', UserSchema)
+
   // Init Nuxt.js
   const nuxt = new Nuxt(config)
 

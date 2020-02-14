@@ -14,7 +14,11 @@ module.exports = {
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      // Iconfonts for Vuetify. You need to leave only which one you use
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Lato:400,700,400italic&display=swap' }
+    ]
   },
   /*
    ** Customize the progress-bar color
@@ -30,10 +34,16 @@ module.exports = {
     { src: '~/assets/css/main.scss', lang: 'scss' }
 
   ],
+  bootstrapVue: {
+    componentPlugins: ['IconsPlugin']
+  },
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [
+    '~plugins/Vuelidate',
+    '~plugins/date.filter'
+  ],
   /*
    ** Nuxt.js dev-modules
    */
@@ -64,6 +74,8 @@ module.exports = {
     /*
      ** You can extend webpack config here
      */
+    // vendor: ['tiptap'],
+    // transpile: ['tiptap'],
     extend (config, ctx) {}
 
     // ESLint on Save

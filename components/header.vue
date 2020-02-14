@@ -6,7 +6,7 @@
       </router-link>
       <ul v-if="!isAuthenticated" class="nav navbar-nav pull-xs-right">
         <li class="nav-item">
-          <button @click="login" class="btn btn-lg btn-slack">
+          <button class="btn btn-lg btn-slack" @click="login">
             <i class="fa fa-slack" />Login Slack
           </button>
 
@@ -24,6 +24,11 @@
         </li>
       </ul>
       <ul v-else class="nav navbar-nav pull-xs-right">
+        <li class="nav-item">
+          <button @click="onLoadTicket">
+            Go Ticket new
+          </button>
+        </li>
         <li class="nav-item">
           <router-link
             :to="{ name: 'new' }"
@@ -54,7 +59,7 @@
           </router-link>
         </li>
         <li class="nav-item">
-          <button @click="logout" class="btn btn-lg btn-slack">
+          <button class="btn btn-lg btn-slack" @click="logout">
             <i class="fa fa-slack" />Logout
           </button>
         </li>
@@ -80,6 +85,10 @@ export default {
 
     logout () {
       this.$store.dispatch('LOGOUT')
+    },
+
+    onLoadTicket () {
+      this.$router.push('/ticket')
     }
   }
 }

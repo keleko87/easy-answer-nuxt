@@ -4,16 +4,16 @@
       Loading tickets...
     </div> -->
     <div>
-      <div v-if="tickets.length === 0" class="ticket-preview">
+      <div v-if="ticketsList.length === 0" class="ticket-preview">
         No tickets are here... yet.
       </div>
     </div>
 
-    <div v-if="tickets.length" class="row">
+    <div v-if="ticketsList.length" class="row">
       <div class="col-md-1" />
       <div class="col-md-10">
         <div
-          v-for="ticket in tickets"
+          v-for="ticket in ticketsList"
           :key="ticket._id"
           :ticket="ticket"
           class="card"
@@ -131,17 +131,13 @@ export default {
 
   computed: {
     ...mapState(['ticketsCount', 'isLoading']),
-    tickets () {
+    ticketsList () {
       const items = this.list
       // Return just page of items needed
       return items.slice(
         (this.pagination.currentPage - 1) * this.pagination.perPage,
         this.pagination.currentPage * this.pagination.perPage
       )
-    },
-
-    totalRows () {
-      return this.$store.getters.loadedLists.length
     }
   },
 
