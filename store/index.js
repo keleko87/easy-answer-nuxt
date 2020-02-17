@@ -9,11 +9,8 @@ const state = () => ({
 
 const actions = {
   async GET_TICKETS (context) {
-    console.log('INDEX STORE', context)
-    // const { data } = await this.$axios.$get(`/tickets`)
-
     // REFACTOR
-    const URL = 'http://localhost:3000/api/ticket/list'
+    const URL = '/api/ticket/list'
     const data = await this.$axios.$get(URL)
     if (data) {
       context.commit('SET_TICKETS', data)

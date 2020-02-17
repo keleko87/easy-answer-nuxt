@@ -1,9 +1,10 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-      <router-link :to="{ name: 'home' }" class="navbar-brand">
+      <nuxt-link to="/">
         Easy Answer 2
-      </router-link>
+      </nuxt-link>
+
       <ul v-if="!isAuthenticated" class="nav navbar-nav pull-xs-right">
         <li class="nav-item">
           <button class="btn btn-lg btn-slack" @click="login">
@@ -25,26 +26,14 @@
       </ul>
       <ul v-else class="nav navbar-nav pull-xs-right">
         <li class="nav-item">
-          <button @click="onLoadTicket">
-            Go Ticket new
-          </button>
+          <nuxt-link to="/ticket">
+            New Ticket
+          </nuxt-link>
         </li>
         <li class="nav-item">
-          <router-link
-            :to="{ name: 'new' }"
-            class="nav-link"
-          >
-            <i class="ion-compose" />&nbsp;New Ticket
-          </router-link>
-        </li>
-        <li class="nav-item">
-          <router-link
-            :to="{ name: 'settings' }"
-            class="nav-link"
-            exact
-          >
-            <i class="ion-gear-a" />&nbsp;Settings
-          </router-link>
+          <nuxt-link to="/settings">
+            <i class="ion-compose" />Settings
+          </nuxt-link>
         </li>
         <li v-if="currentUser.username" class="nav-item">
           <router-link
@@ -59,9 +48,9 @@
           </router-link>
         </li>
         <li class="nav-item">
-          <button class="btn btn-lg btn-slack" @click="logout">
-            <i class="fa fa-slack" />Logout
-          </button>
+          <span @click="logout">
+            Logout
+          </span>
         </li>
       </ul>
     </div>
@@ -70,7 +59,6 @@
 
 <script>
 import { mapState } from 'vuex'
-// import { LOGIN, LOGOUT } from '../store/actions'
 
 export default {
   name: 'Header',
@@ -85,11 +73,17 @@ export default {
 
     logout () {
       this.$store.dispatch('LOGOUT')
-    },
-
-    onLoadTicket () {
-      this.$router.push('/ticket')
     }
   }
 }
 </script>
+
+<style lang="scss">
+  .navbar-nav {
+    margin-top: 0;
+
+    .nav-item {
+      padding: 0 0.5rem;
+    }
+  }
+</style>

@@ -138,7 +138,7 @@ export default {
       }
 
       this.$store.dispatch('SAVE_TICKET')
-      this.$router.push({ name: 'home' })
+      this.$router.push('/')
     }
   },
 

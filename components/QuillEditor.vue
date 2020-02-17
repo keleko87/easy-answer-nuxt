@@ -186,14 +186,6 @@ import {
   Underline,
   History
 } from 'tiptap-extensions'
-// let tiptap
-// let tiptapExtension
-
-// // if (process.client || process.browser) {
-// //   console.log('procss', process.client, process.browser)
-// //   tiptap = require('tiptap')
-// //   tiptapExtension = require('tiptap-extensions')
-// // }
 
 export default {
   name: 'QuillEditor',
@@ -317,7 +309,7 @@ export default {
 
 .menubar {
   &__button {
-    font-size: 23px;
+    font-size: 22px;
 
     &--icon {
       font-size: 16px;

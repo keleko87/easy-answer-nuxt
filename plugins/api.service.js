@@ -1,94 +1,103 @@
-// import Vue from 'vue'
-// import axios from 'axios'
-// import VueAxios from 'vue-axios'
 // import JwtService from '../common/jwt.service'
 
-// const API_URL = process.env.VUE_APP_API
+// export default function ({ $axios, redirect }, inject) {
+//   // Create a custom axios instance
+//   const api = $axios.create({
+//     headers: {
+//       common: {
+//         Accept: 'text/plain, */*'
+//       }
+//     }
+//   })
 
-// const ApiService = {
-//   init () {
-//     console.log(process.env)
-//     Vue.use(VueAxios, axios)
-//     Vue.axios.defaults.baseURL = API_URL
-//   },
+//   console.log('PROCESS', process.env)
 
-//   setHeader () {
-//     Vue.axios.defaults.headers.common.Authorization = `Token ${JwtService.getToken()}`
-//   },
+//   // Set baseURL to something different
+//   api.setBaseURL(`${process.env.BASE_URL}/api`)
 
-//   query (resource, params) {
-//     return Vue.axios.get(resource, params).catch((error) => {
-//       throw new Error(`[RWV] ApiService ${error}`)
-//     })
-//   },
-
-//   get (resource, slug = '') {
-//     return Vue.axios.get(`${resource}/${slug}`).catch((error) => {
-//       throw new Error(`[RWV] ApiService ${error}`)
-//     })
-//   },
-
-//   post (resource, params) {
-//     return Vue.axios.post(`${resource}`, params)
-//   },
-
-//   update (resource, slug, params) {
-//     return Vue.axios.put(`${resource}/${slug}`, params)
-//   },
-
-//   put (resource, params) {
-//     return Vue.axios.put(`${resource}`, params)
-//   },
-
-//   delete (resource) {
-//     return Vue.axios.delete(resource).catch((error) => {
-//       throw new Error(`[RWV] ApiService ${error}`)
-//     })
-//   }
+//   // Inject to context as $api
+//   inject('api', api)
 // }
 
-// export default ApiService
+const ApiService = {
 
-// export const TicketsService = {
-//   resource: 'ticket',
+  config ({ $axios, redirect }, inject) {
+    // Create a custom axios instance
+    const api = $axios.create({
+      headers: {
+        common: {
+          Accept: 'text/plain, */*'
+        }
+      }
+    })
 
-//   getTickets () {
-//     return ApiService.get(this.resource, 'list')
-//   },
+    console.log('PROCESS', process.env)
 
-//   getTicket (id) {
-//     return ApiService.get(this.resource, id)
-//   },
+    // Set baseURL to something different
+    api.setBaseURL(`${process.env.BASE_URL}/api`)
 
-//   saveTicket (ticket) {
-//     return ApiService.post(`${this.resource}/new`, ticket)
-//   }
-// }
+    // Inject to context as $api
+    inject('api', api)
+  },
+  // setHeader () {
+  //   Vue.axios.defaults.headers.common.Authorization = `Token ${JwtService.getToken()}`
+  // },
 
-// export const CommentService = {
-//   resource: 'ticket/comment',
+  get (resource, slug = '') {
+    return this.$axios.$get(`${resource}/${slug}`).catch((error) => {
+      throw new Error(`[RWV] ApiService ${error}`)
+    })
+  },
 
-//   getTicketComments (ticketId) {
-//     return ApiService.get(this.resource, ticketId)
-//   },
+  post (resource, params) {
+    return this.$axios.$post(`${resource}`, params)
+  }
 
-//   saveComment (comment, id) {
-//     return ApiService.post(`${this.resource}/${id}`, comment)
-//   }
-// }
+}
 
-// export const AuthService = {
-//   resource: '/auth',
+export default ApiService
 
-//   login () {
-//     return ApiService.get(this.resource, 'login')
-//   },
+export const TicketsService = {
+  resource: 'ticket',
 
-//   getUserProfile () {
-//     return ApiService.get(this.resource, 'profile')
-//   },
+  getTickets () {
+    return ApiService.get(this.resource, 'list')
+  },
 
-//   logout () {
-//     return ApiService.get(this.resource, 'logout')
-//   }
-// }
+  getTicket (id) {
+    return ApiService.get(this.resource, id)
+  },
+
+  saveTicket (ticket) {
+    console.log(`${this.resource}/new`, '-----', ticket)
+    return ApiService.post(`${this.resource}/new`, ticket)
+  }
+}
+
+export const CommentService = {
+  resource: 'ticket/comment',
+
+  getTicketComments (ticketId) {
+    return ApiService.get(this.resource, ticketId)
+  },
+
+  saveComment (comment, id) {
+    return ApiService.post(`${this.resource}/${id}`, comment)
+  }
+}
+
+export const AuthService = {
+  resource: '/auth',
+
+  login () {
+    return ApiService.get(this.resource, 'login')
+  },
+
+  getUserProfile () {
+    return ApiService.get(this.resource, 'profile')
+  },
+
+  logout () {
+    return ApiService.get(this.resource, 'logout')
+  }
+}
