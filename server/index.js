@@ -2,7 +2,7 @@ require('dotenv').config()
 const path = require('path')
 const express = require('express')
 const consola = require('consola')
-// const bodyParser = require('body-parser')
+const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const session = require('express-session')
@@ -69,26 +69,26 @@ async function start () {
     await nuxt.ready()
   }
 
-  // app.use(bodyParser.json())
-  // app.use(bodyParser.urlencoded({ extended: false }))
+  app.use(bodyParser.json())
+  app.use(bodyParser.urlencoded({ extended: false }))
 
-  // // Transform req and res to have the same API as Express in Nuxt
-  // // So we can use res.status and res.json
-  // app.use((req, res, next) => {
-  //   Object.setPrototypeOf(req, app.request)
-  //   Object.setPrototypeOf(res, app.response)
-  //   req.res = res
-  //   res.req = req
-  //   next()
-  // })
+  // Transform req and res to have the same API as Express in Nuxt
+  // So we can use res.status and res.json
+  app.use((req, res, next) => {
+    Object.setPrototypeOf(req, app.request)
+    Object.setPrototypeOf(res, app.response)
+    req.res = res
+    res.req = req
+    next()
+  })
 
-  // // ROUTES
-  // const index = require('./routes/index')
-  // const ticket = require('./routes/ticket')
-  // const auth = require('./routes/auth')
-  // app.use('/api', index)
-  // app.use('/api/ticket', ticket)
-  // app.use('/api/auth', auth)
+  // ROUTES
+  const index = require('./routes/index')
+  const ticket = require('./routes/ticket')
+  const auth = require('./routes/auth')
+  app.use('/api', index)
+  app.use('/api/ticket', ticket)
+  app.use('/api/auth', auth)
 
   // Give nuxt middleware to express
   app.use(nuxt.render)
