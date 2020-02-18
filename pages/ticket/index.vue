@@ -139,7 +139,7 @@ export default {
       }
 
       this.$store.dispatch('ticket/SAVE_TICKET', formData)
-      // this.$router.push('/')
+      this.$router.push('/')
     }
   },
 
