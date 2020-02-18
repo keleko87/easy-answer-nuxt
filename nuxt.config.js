@@ -43,7 +43,7 @@ module.exports = {
   plugins: [
     '~plugins/Vuelidate',
     '~plugins/date.filter',
-    { src: '~plugins/onesait', mode: 'client' }
+    // { src: '~plugins/onesait', mode: 'client' }
   ],
   /*
    ** Nuxt.js dev-modules

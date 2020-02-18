@@ -12,7 +12,7 @@
       <div class="row">
         <div class="col-12">
           <no-ssr>
-            <ods-chart
+            <!-- <ods-chart
               type="singleBar"
               :data="{labels: ['label', 'label', 'label'], series: [[{meta: 'valor 1', value: 30}, {meta: 'valor 1', value: 20}, {meta: 'valor 1', value: 40}]]}"
               symbol="kg"
@@ -32,7 +32,7 @@
             />
             <ods-button type="primary">
               Link Button
-            </ods-button>
+            </ods-button> -->
           </no-ssr>
         </div>
       </div>
