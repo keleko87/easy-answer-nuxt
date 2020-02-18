@@ -68,16 +68,16 @@ module.exports = {
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv'
   ],
-  // env: {
-  //   baseUrl: process.env.BASE_URL || 'http://localhost:3000'
-  // },
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+  },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {
-    baseURL: process.env.BASE_URL
-  },
+  // axios: {
+  //   baseURL: process.env.BASE_URL
+  // },
   /*
    ** Build configuration
    */
