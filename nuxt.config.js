@@ -37,10 +37,10 @@ module.exports = {
   bootstrapVue: {
     componentPlugins: ['IconsPlugin']
   },
-  serverMiddleware: [
-    // Will register file from project api directory to handle /api/* requires
-    { path: '/api', handler: '~/server/index.js' }
-  ],
+  // serverMiddleware: [
+  //   // Will register file from project api directory to handle /api/* requires
+  //   { path: '/api', handler: '~/api/index.js' }
+  // ],
   /*
    ** Plugins to load before mounting the App
    */
