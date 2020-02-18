@@ -34,8 +34,10 @@ const storagePhoto = multer.diskStorage({
   },
   filename (req, file, callback) {
     const image = req.body.imageUrl
-    const imageUrl = image.split(`blob:${process.env.APP_WEB}`)
-    callback(null, imageUrl[1])
+    if (image) {
+      const imageUrl = image.split(`blob:${process.env.BASE_URL}/`)
+      callback(null, imageUrl[1])
+    }
   }
 })
 
@@ -53,7 +55,7 @@ router.post('/new', (req, res) => {
 
     if (req.file && imageUrl) {
       image = req.file
-      imageUrl = req.body.imageUrl.replace(`blob:${process.env.APP_WEB}`, '')
+      imageUrl = req.body.imageUrl.replace(`blob:${process.env.BASE_URL}/`, '')
     } else {
       image = { filename: 'nofile' }
       imageUrl = ''
@@ -72,7 +74,6 @@ router.post('/new', (req, res) => {
 
     ticket.save((err, ticket) => {
       if (err) {
-        console.log('errorrrrr', err)
         const { statusCode } = err
         if (statusCode >= 100 && statusCode < 600) { res.status(statusCode) } else { res.status(500) }
       }

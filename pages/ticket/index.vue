@@ -58,7 +58,7 @@
                 >
               </div>
 
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <input
                   id="imageUrl"
                   ref="imageUrl"
@@ -67,11 +67,12 @@
                   name="imageUrl"
                   readonly
                 >
-              </div>
+              </div> -->
 
-              <div id="preview">
+              <!-- <div id="preview">
                 <img v-if="photoUrl" :src="photoUrl">
-              </div>
+              </div> -->
+
               <button
                 type="button"
                 class="btn btn-success"
@@ -116,7 +117,7 @@ export default {
       const photo = this.$refs.photo.files[0]
       this.photoUrl = URL.createObjectURL(photo)
       this.form.photo = photo
-      this.$v.form.imageUrl = this.photoUrl
+      this.$v.form.imageUrl.$model = this.photoUrl
     },
 
     onInput (ev) {
@@ -137,8 +138,8 @@ export default {
         formData.append('photo', this.form.photo)
       }
 
-      this.$store.dispatch('SAVE_TICKET')
-      this.$router.push('/')
+      this.$store.dispatch('ticket/SAVE_TICKET', formData)
+      // this.$router.push('/')
     }
   },
 
@@ -153,7 +154,7 @@ export default {
         minLength: minLength(10),
         maxLength: maxLength(500)
       },
-      imageUrl: {},
+      imageUrl: '',
       tags: {
         required
       },

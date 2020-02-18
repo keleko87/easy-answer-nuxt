@@ -19,6 +19,8 @@
 //   inject('api', api)
 // }
 
+const baseURL = `${process.env.BASE_URL}/api`
+
 const ApiService = {
 
   config ({ $axios, redirect }, inject) {
@@ -34,7 +36,7 @@ const ApiService = {
     console.log('PROCESS', process.env)
 
     // Set baseURL to something different
-    api.setBaseURL(`${process.env.BASE_URL}/api`)
+    api.setBaseURL(baseURL)
 
     // Inject to context as $api
     inject('api', api)
@@ -58,7 +60,7 @@ const ApiService = {
 export default ApiService
 
 export const TicketsService = {
-  resource: 'ticket',
+  resource: `${baseURL}/ticket`,
 
   getTickets () {
     return ApiService.get(this.resource, 'list')
@@ -69,7 +71,6 @@ export const TicketsService = {
   },
 
   saveTicket (ticket) {
-    console.log(`${this.resource}/new`, '-----', ticket)
     return ApiService.post(`${this.resource}/new`, ticket)
   }
 }

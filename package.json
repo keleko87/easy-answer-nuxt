@@ -15,6 +15,7 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/dotenv": "^1.4.0",
+    "@onesait/onesait-ds": "^1.0.4",
     "bcrypt": "^3.0.8",
     "body-parser": "~1.16.0",
     "bootstrap": "^4.1.3",
