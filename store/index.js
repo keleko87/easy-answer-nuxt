@@ -10,7 +10,7 @@ const state = () => ({
 const actions = {
   async GET_TICKETS (context) {
     // REFACTOR
-    const URL = `${process.env.BASE_URL}/api/ticket/list`
+    const URL = '/api/ticket/list'
     const data = await this.$axios.$get(URL)
     if (data) {
       context.commit('SET_TICKETS', data)
