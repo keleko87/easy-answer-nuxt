@@ -1,3 +1,6 @@
+// IMPORTANT: Necessary to can use process.env
+require('dotenv').config()
+
 module.exports = {
   mode: 'universal',
   /*
@@ -69,7 +72,7 @@ module.exports = {
     '@nuxtjs/dotenv'
   ],
   env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000/pk'
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000/'
   },
   /*
    ** Axios module configuration
