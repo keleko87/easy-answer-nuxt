@@ -37,12 +37,15 @@ module.exports = {
   bootstrapVue: {
     componentPlugins: ['IconsPlugin']
   },
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+  },
   /*
    ** Plugins to load before mounting the App
    */
   plugins: [
     '~plugins/Vuelidate',
-    '~plugins/date.filter',
+    '~plugins/date.filter'
     // { src: '~plugins/onesait', mode: 'client' }
   ],
   /*
