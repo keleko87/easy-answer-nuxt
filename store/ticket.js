@@ -31,7 +31,7 @@ const actions = {
 
   async 'SAVE_TICKET' (context, form) {
     try {
-      await this.$axios.$post(`${process.env.BASE_URL}/api/ticket/new`, form)
+      await this.$axios.$post('/api/ticket/new', form)
       // await TicketsService.saveTicket(form)
       context.commit('SET_TICKET', form)
     } catch (err) {
@@ -67,7 +67,7 @@ const mutations = {
   },
   'SET_IMAGE_URL' (state, ticket) {
     state.data.content = ticket.content.replace(
-      `blob:${process.env.BASE_URL}/${ticket.image.filename}`,
+      `blob:${process.env.baseUrl}/${ticket.image.filename}`,
       ticket.imageUrl
     )
   }

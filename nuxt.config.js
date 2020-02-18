@@ -37,15 +37,17 @@ module.exports = {
   bootstrapVue: {
     componentPlugins: ['IconsPlugin']
   },
-  env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
-  },
+  // serverMiddleware: [
+  //   // Will register file from project api directory to handle /api/* requires
+  //   { path: '/api', handler: '~/api/index.js' }
+  // ],
   /*
    ** Plugins to load before mounting the App
    */
   plugins: [
     '~plugins/Vuelidate',
     '~plugins/date.filter'
+    // '~plugins/axios'
     // { src: '~plugins/onesait', mode: 'client' }
   ],
   /*
@@ -66,11 +68,16 @@ module.exports = {
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv'
   ],
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+  },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  // axios: {
+  //   baseURL: process.env.BASE_URL
+  // },
   /*
    ** Build configuration
    */
