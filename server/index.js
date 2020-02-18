@@ -47,6 +47,7 @@ app.use(session({
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')
 config.dev = process.env.NODE_ENV !== 'production'
+console.log('configggg', config)
 
 async function start () {
   // Connect MongoDB
@@ -58,6 +59,7 @@ async function start () {
   const nuxt = new Nuxt(config)
 
   const { host, port } = nuxt.options.server
+  console.log('nuxt -------', nuxt.options)
 
   // Build only in dev mode
   if (config.dev) {
