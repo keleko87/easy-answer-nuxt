@@ -67,7 +67,7 @@ const mutations = {
   },
   'SET_IMAGE_URL' (state, ticket) {
     state.data.content = ticket.content.replace(
-      `blob:${process.env.BASE_URL}/${ticket.image.filename}`,
+      `blob:${process.env.baseUrl}/${ticket.image.filename}`,
       ticket.imageUrl
     )
   }

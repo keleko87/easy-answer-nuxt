@@ -10,7 +10,8 @@ const state = () => ({
 const actions = {
   async GET_TICKETS (context) {
     // REFACTOR
-    this.$axios.defaults.baseURL = process.env.BASE_URL
+    console.log('PROCESS ENV', process.env.baseUrl)
+    this.$axios.defaults.baseURL = process.env.baseUrl
 
     const URL = '/api/ticket/list'
     const data = await this.$axios.$get(URL)
