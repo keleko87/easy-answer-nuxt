@@ -42,7 +42,8 @@ module.exports = {
    */
   plugins: [
     '~plugins/Vuelidate',
-    '~plugins/date.filter'
+    '~plugins/date.filter',
+    '~plugins/axios'
     // { src: '~plugins/onesait', mode: 'client' }
   ],
   /*
