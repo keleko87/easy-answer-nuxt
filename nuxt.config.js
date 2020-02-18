@@ -37,13 +37,17 @@ module.exports = {
   bootstrapVue: {
     componentPlugins: ['IconsPlugin']
   },
+  serverMiddleware: [
+    // Will register file from project api directory to handle /api/* requires
+    { path: '/api', handler: '~/server/index.js' }
+  ],
   /*
    ** Plugins to load before mounting the App
    */
   plugins: [
     '~plugins/Vuelidate',
-    '~plugins/date.filter',
-    '~plugins/axios'
+    '~plugins/date.filter'
+    // '~plugins/axios'
     // { src: '~plugins/onesait', mode: 'client' }
   ],
   /*
@@ -71,9 +75,9 @@ module.exports = {
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  // axios: {
-  //   baseURL: process.env.BASE_URL
-  // },
+  axios: {
+    baseURL: process.env.BASE_URL
+  },
   /*
    ** Build configuration
    */
