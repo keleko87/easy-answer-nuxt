@@ -1,6 +1,8 @@
 // IMPORTANT: Necessary to can use process.env
 require('dotenv').config()
 
+console.log('process---------', process.env.BASE_URL)
+
 module.exports = {
   mode: 'universal',
   /*
@@ -72,7 +74,7 @@ module.exports = {
     '@nuxtjs/dotenv'
   ],
   env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000/es'
+    baseUrl: process.env.BASE_URL || 'https://easy-answer-nuxt-2.herokuapp.com/api'
   },
   /*
    ** Axios module configuration
