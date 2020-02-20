@@ -55,6 +55,10 @@ module.exports = {
     // '~plugins/axios'
     // { src: '~plugins/onesait', mode: 'client' }
   ],
+  serverMiddleware: [
+    '~/api'
+    // '~/server'
+  ],
   /*
    ** Nuxt.js dev-modules
    */

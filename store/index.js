@@ -10,7 +10,7 @@ const state = () => ({
 const actions = {
   async GET_TICKETS (context) {
     // REFACTOR
-    const URL = '/api/ticket/list'
+    const URL = '/ticket/list'
     console.log('PROCESS ENV ', process.env.baseUrl)
 
     this.$axios.defaults.baseURL = process.env.baseUrl
