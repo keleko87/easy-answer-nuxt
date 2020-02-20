@@ -57,7 +57,6 @@ module.exports = {
   ],
   serverMiddleware: [
     '~/api'
-    // '~/server'
   ],
   /*
    ** Nuxt.js dev-modules
