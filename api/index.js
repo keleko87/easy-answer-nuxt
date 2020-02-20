@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/order
-const Ticket = require('./models/Ticket')
+const Ticket = require('../server/models/Ticket')
 const mongoose = require('mongoose')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
